@@ -14,12 +14,8 @@ public class PlateGenerator {
 
         Random r = new Random();
         int counter = r.nextInt(cityIdentifier.length);
+        return cityIdentifier[counter];
 
-        try {
-            return cityIdentifier[counter - 1];
-        } catch (java.lang.ArrayIndexOutOfBoundsException e) {
-            return cityIdentifier[0];
-        }
     }
 
     public static String GenerateUniqueIdentifier() {
@@ -31,11 +27,8 @@ public class PlateGenerator {
 
         while(i < 2) {
             int counter = r.nextInt(alphabet.length);
-            try {
-                identifier += alphabet[counter];
-            } catch(java.lang.ArrayIndexOutOfBoundsException e) {
-                identifier += "";
-            }
+            identifier += alphabet[counter];
+
             i++;
         }
 
@@ -66,9 +59,9 @@ public class PlateGenerator {
 
     public static String PlugInVehicle() {
         Random r = new Random();
-        int probability = r.nextInt(126);
+        float probability = r.nextFloat();
 
-        if(probability == 93) {
+        if(probability < 0.0126) {
             return "E";
         } else {
             return "";
